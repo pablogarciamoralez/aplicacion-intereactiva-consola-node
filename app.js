@@ -1,6 +1,11 @@
 require("colors");
 const { guardarDB, leerDB } = require("./helpers/guardarArchivo");
-const { inquirerMenu, pausa, leerInput } = require("./helpers/inquirer");
+const {
+  inquirerMenu,
+  pausa,
+  leerInput,
+  listadoTareasParaBorarr,
+} = require("./helpers/inquirer");
 const Tareas = require("./models/tareas");
 // const { pausa } = require('./helpers/messages')
 // const { mostrarMenu, pausa } = require('./helpers/messages')
@@ -35,6 +40,10 @@ const main = async () => {
         break;
       case "4":
         tareas.listarPendientesCompletadas(false);
+        break;
+      case "6":
+        const id = await listadoTareasParaBorarr(tareas.listadoArr);
+        console.log(id);
         break;
     }
 
